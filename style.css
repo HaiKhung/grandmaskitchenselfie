@@ -27,11 +27,9 @@ video, .overlay {
 }
 
 .overlay.logo {
-  top: 0;
-  height: 100px;
-  width: auto;
-  left: 50%;
-  transform: translateX(-50%);
+  height: auto;
+  width: 100%;
+  left: 10px;
   object-fit: contain;
   pointer-events: none;
   z-index: 2;
