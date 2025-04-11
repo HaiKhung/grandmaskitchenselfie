@@ -28,8 +28,8 @@ video, .overlay {
 
 .overlay.logo {
   height: auto;
-  width: 100%;
-  left: 10px;
+  width: 150px;
+  left: 20px;
   object-fit: contain;
   pointer-events: none;
   z-index: 2;
@@ -41,12 +41,13 @@ video, .overlay {
 }
 
 .overlay.pho {
-  width: 100px;
+  width: 130px;
   height: auto;
-  bottom: 10px;
+  bottom: 25px;
   right: 10px;
   animation: float 2s ease-in-out infinite;
   object-fit: contain;
+  opacity: 0.8;
   z-index: 2;
 }
 
