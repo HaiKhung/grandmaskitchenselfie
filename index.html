@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grandma's Kitchen Photo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="photo-container">
+    <video id="video" autoplay playsinline></video>
+    <img src="assets/images/bamboo-bg.jpeg" class="overlay bamboo" />
+    <img src="assets/images/logo.png" class="overlay logo" />
+    <img src="assets/images/banh-khot.png" class="overlay pho" />
+    <div class="slogan">Grandma's Kitchen – Vietnamese Traditional Food</div>
+  </div>
+  
+  <div class="controls">
+    <button id="capture">📸 Take Photo</button>
+    <a id="downloadLink" download="grandmas-photo.png" style="display:none;">Download</a>
+  </div>
+
+  <canvas id="canvas" style="display:none;"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
