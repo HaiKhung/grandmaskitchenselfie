@@ -1,41 +1,82 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #222;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .photo-container {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-  }
-  video, .overlay {
-    width: 100%;
-    display: block;
-  }
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  .logo {
-    top: 20px;
-    left: 20px;
-    width: 100px;
-  }
-  .pho {
-    bottom: 20px;
-    right: 20px;
-    width: 150px;
-  }
-  .slogan {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    font-size: 16px;
-  }
-  .controls {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+video, .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay.logo {
+  top: 0;
+  height: 100px;
+  width: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.overlay.bamboo {
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.overlay.pho {
+  width: 100px;
+  height: auto;
+  bottom: 10px;
+  right: 10px;
+  animation: float 2s ease-in-out infinite;
+  object-fit: contain;
+  z-index: 2;
+}
+
+.slogan {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  background: rgba(0,0,0,0.5);
+  z-index: 3;
+}
+
+.controls {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  background: #ff6347;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}

@@ -3,43 +3,34 @@ const canvas = document.getElementById('canvas');
 const captureBtn = document.getElementById('capture');
 const downloadLink = document.getElementById('downloadLink');
 
+// Setup camera
 navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
   video.srcObject = stream;
 });
 
-captureBtn.addEventListener('click', async () => {
-  if (video.readyState < video.HAVE_ENOUGH_DATA) {
-    alert("Camera not ready yet. Please wait a second and try again.");
-    return;
-  }
-  await renderCanvas(video);
-});
-
-async function renderCanvas(baseImage) {
+// Capture
+captureBtn.addEventListener('click', () => {
   const context = canvas.getContext('2d');
-  canvas.width = baseImage.videoWidth || baseImage.width;
-  canvas.height = baseImage.videoHeight || baseImage.height;
-
-  const bamboo = await loadImage(document.querySelector('.bamboo').src);
-  context.drawImage(bamboo, 0, 0, canvas.width, canvas.height);
-  context.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
-
-  const scaleX = canvas.width / video.offsetWidth;
-  const scaleY = canvas.height / video.offsetHeight;
-
-  const overlays = document.querySelectorAll('.overlay:not(.bamboo)');
-  for (let img of overlays) {
-    const loadedImg = await loadImage(img.src);
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  
+  // Draw video frame
+  context.drawImage(video, 0, 0, canvas.width, canvas.height);
+  
+  // Draw overlays
+  document.querySelectorAll('.overlay').forEach(img => {
     const rect = img.getBoundingClientRect();
-    context.drawImage(
-      loadedImg,
+    const scaleX = canvas.width / video.offsetWidth;
+    const scaleY = canvas.height / video.offsetHeight;
+    context.drawImage(img, 
       (rect.left - video.offsetLeft) * scaleX,
       (rect.top - video.offsetTop) * scaleY,
       rect.width * scaleX,
       rect.height * scaleY
     );
-  }
+  });
 
+  // Draw slogan text
   context.fillStyle = 'rgba(0,0,0,0.5)';
   context.fillRect(0, canvas.height - 50, canvas.width, 50);
   context.fillStyle = 'white';
@@ -47,18 +38,9 @@ async function renderCanvas(baseImage) {
   context.textAlign = 'center';
   context.fillText("Grandma's Kitchen – Vietnamese Traditional Food", canvas.width / 2, canvas.height - 20);
 
+  // Show download
   const dataURL = canvas.toDataURL('image/png');
   downloadLink.href = dataURL;
   downloadLink.style.display = 'inline-block';
   downloadLink.textContent = '📥 Download Photo';
-}
-
-function loadImage(src) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = () => resolve(img);
-    img.onerror = reject;
-    img.src = src;
-  });
-}
+});
