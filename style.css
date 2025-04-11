@@ -34,6 +34,7 @@ video, .overlay {
   transform: translateX(-50%);
   object-fit: contain;
   pointer-events: none;
+  z-index: 2;
 }
 
 .overlay.bamboo {
