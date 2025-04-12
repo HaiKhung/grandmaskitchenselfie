@@ -40,6 +40,15 @@ video, .overlay {
   z-index: 1;
 }
 
+.overlay.hat {
+    height: auto;
+    width: 100%;
+    left: 0%;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 2;
+  }
+
 .overlay.pho {
   width: 130px;
   height: auto;
