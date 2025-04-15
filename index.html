@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Grandma's Kitchen Photo</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
   <div class="photo-container">
-    <video id="video" autoplay playsinline></video>
-    <img src="assets/images/vn-hat.png" class="overlay hat" />
+    <video id="video" autoplay muted playsinline></video>
     <img src="assets/images/logo.png" class="overlay logo" />
     <img src="assets/images/banh-khot.png" class="overlay pho" />
     <div class="slogan">Grandma's Kitchen – Vietnamese Traditional Food</div>
@@ -17,11 +18,10 @@
   
   <div class="controls">
     <button id="capture">📸 Take Photo</button>
-    <a id="downloadLink" download="grandmas-photo.png" style="display:none;">Download</a>
+    <a id="downloadLink" download="grandmas-photo.png" style="display:none;">📥 Download Photo</a>
   </div>
 
   <canvas id="canvas" style="display:none;"></canvas>
-
-  <script src="script.js"></script>
+  <img id="hatImage" src="assets/images/vn-hat.png" style="display: none;" />
 </body>
 </html>
