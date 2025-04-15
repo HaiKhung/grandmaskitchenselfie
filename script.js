@@ -6,7 +6,7 @@ const hatImg = document.getElementById('hatImage');
 
 // Load face detection model
 Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
+  faceapi.nets.tinyFaceDetector.loadFromUri('/models/tiny_face_detector'),
 ]).then(startVideo);
 
 function startVideo() {
