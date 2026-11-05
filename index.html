@@ -7,20 +7,27 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="photo-container">
-    <video id="video" autoplay playsinline></video>
-    <img src="assets/images/vn-hat.png" class="overlay hat" />
-    <img src="assets/images/logo.png" class="overlay logo" />
-    <img src="assets/images/banh-khot.png" class="overlay pho" />
-    <div class="slogan">Grandma's Kitchen – Vietnamese Traditional Food</div>
-  </div>
-  
-  <div class="controls">
-    <button id="capture">📸 Take Photo</button>
-    <a id="downloadLink" download="grandmas-photo.png" style="display:none;">Download</a>
+  <div class="photo-container" id="stage">
+    <video id="video" autoplay playsinline muted></video>
+    <img src="assets/images/vn-hat.png" class="overlay hat" alt="" />
+    <img src="assets/images/logo.png" class="overlay logo" alt="Grandma's Kitchen logo" />
+    <img src="assets/images/banh-khot.png" class="overlay pho" alt="" />
+    <div class="slogan" id="slogan">Grandma's Kitchen – Vietnamese Traditional Food</div>
+
+    <img id="result" class="result" alt="Your photo" hidden />
+    <div id="countdown" class="countdown" aria-live="assertive" hidden></div>
+    <div id="flash" class="flash"></div>
+    <p id="message" class="message" role="status" hidden></p>
   </div>
 
-  <canvas id="canvas" style="display:none;"></canvas>
+  <div class="controls">
+    <button id="capture" type="button" disabled>📸 Take Photo</button>
+    <button id="retake" type="button" class="secondary" hidden>🔄 Retake</button>
+    <a id="downloadLink" class="button" download="grandmas-photo.png" hidden>📥 Download</a>
+    <button id="share" type="button" class="secondary" hidden>📤 Share</button>
+  </div>
+
+  <canvas id="canvas" hidden></canvas>
 
   <script src="script.js"></script>
 </body>
