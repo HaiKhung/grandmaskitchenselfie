@@ -1,0 +1,15 @@
+{
+  "name": "Grandma's Kitchen Photo",
+  "short_name": "Grandma's Selfie",
+  "description": "Take a fun selfie with a Vietnamese conical hat and Grandma's Kitchen branding.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#222222",
+  "theme_color": "#222222",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

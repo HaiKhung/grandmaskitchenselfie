@@ -3,15 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#222222" />
   <title>Grandma's Kitchen Photo</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-180.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="photo-container" id="stage">
+  <header class="header">
+    <h1>Grandma's Kitchen</h1>
+    <p id="hint">Allow camera access, put on the hat and smile! 😊</p>
+  </header>
+
+  <div class="photo-container mirrored" id="stage">
     <video id="video" autoplay playsinline muted></video>
-    <img src="assets/images/vn-hat.png" class="overlay hat" alt="" />
-    <img src="assets/images/logo.png" class="overlay logo" alt="Grandma's Kitchen logo" />
-    <img src="assets/images/banh-khot.png" class="overlay pho" alt="" />
+    <img src="assets/images/vn-hat.webp" class="overlay hat" id="hat" alt="" />
+    <img src="assets/images/logo.webp" class="overlay logo" alt="Grandma's Kitchen logo" />
+    <img src="assets/images/banh-khot.webp" class="overlay pho" id="food" alt="" />
+    <div class="frame" id="frame" hidden></div>
     <div class="slogan" id="slogan">Grandma's Kitchen – Vietnamese Traditional Food</div>
 
     <img id="result" class="result" alt="Your photo" hidden />
@@ -20,8 +30,15 @@
     <p id="message" class="message" role="status" hidden></p>
   </div>
 
+  <div class="options" role="group" aria-label="Stickers">
+    <label class="chip"><input type="checkbox" id="optHat" checked /> 👒 Hat</label>
+    <label class="chip"><input type="checkbox" id="optFood" checked /> 🥟 Food</label>
+    <label class="chip"><input type="checkbox" id="optFrame" /> 🖼️ Frame</label>
+    <button id="switchCamera" type="button" class="chip" hidden aria-label="Switch between front and back camera">🔁 Flip camera</button>
+  </div>
+
   <div class="controls">
-    <button id="capture" type="button" disabled>📸 Take Photo</button>
+    <button id="capture" type="button" aria-label="Take photo after a 3 second countdown" disabled>📸 Take Photo</button>
     <button id="retake" type="button" class="secondary" hidden>🔄 Retake</button>
     <a id="downloadLink" class="button" download="grandmas-photo.png" hidden>📥 Download</a>
     <button id="share" type="button" class="secondary" hidden>📤 Share</button>
@@ -29,6 +46,7 @@
 
   <canvas id="canvas" hidden></canvas>
 
-  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
