@@ -133,3 +133,6 @@ button:focus-visible, a.button:focus-visible { outline: 3px solid #fff; outline-
   position: absolute; inset: 0; z-index: 4; pointer-events: none; box-sizing: border-box;
   border: 12px solid #c8102e;
 }
+
+.footer { font-size: 12px; opacity: 0.6; margin: 0 0 16px; }
+.footer a { color: inherit; }
